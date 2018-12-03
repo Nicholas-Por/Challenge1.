@@ -4,9 +4,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-
+        int[] temp;
         int[] array = Arr(10000);
-        IntMerge(array, 0, );
+        IntMerge(array, 0, 0, 0, (int[] temp1);
     }
     public static int[] Arr(int num)
     {
