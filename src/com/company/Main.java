@@ -1,101 +1,50 @@
 package com.company;
-
+import java.util.ArrayList;
 public class Main
 {
-
-    public static void main(int args[])
-    {
-        int arr[] = {12, 11, 13, 5, 6, 7};
-
-        System.out.println("Given Array");
-        printArray(arr);
-
-
-    }
-    // Merges two subarrays of arr[].
-    // First subarray is arr[l..m]
-    // Second subarray is arr[m+1..r]
-    public static void mergesort(int arr[], int l, int m, int r)
-    {
-        // Find sizes of two subarrays to be merged
-        int n1 = m - l + 1;
-        int n2 = r - m;
-
-        /* Create temp arrays */
-        int L[] = new int [n1];
-        int R[] = new int [n2];
-
-        /*Copy data to temp arrays*/
-        for (int i=0; i<n1; ++i)
-            L[i] = arr[l + i];
-        for (int j=0; j<n2; ++j)
-            R[j] = arr[m + 1+ j];
-
-
-        /* Merge the temp arrays */
-
-        // Initial indexes of first and second subarrays
-        int i = 0, j = 0;
-
-        // Initial index of merged subarry array
-        int k = l;
-        while (i < n1 && j < n2)
-        {
-            if (L[i] <= R[j])
-            {
-                arr[k] = L[i];
+   int i; //left
+   int j; //middle
+   int k; //also left to track number placement
+    int right;
+    public static void StringMerge(int[] arr, int left, int mid,int right, int[] temp){
+        int i = left;
+        int j = mid + 1;
+        int k = left;
+        while( i <= mid && j <= right){
+            if(arr[i].compareTo(arr[j]) < 0){
+                temp[k] = arr[i];
                 i++;
-            }
-            else
-            {
-                arr[k] = R[j];
+            }else{
+                temp[k] = arr[j];
                 j++;
             }
             k++;
         }
-
-        /* Copy remaining elements of L[] if any */
-        while (i < n1)
-        {
-            arr[k] = L[i];
+        while(i <= mid){
+            temp[k] = arr[i];
             i++;
             k++;
         }
-
-        /* Copy remaining elements of R[] if any */
-        while (j < n2)
-        {
-            arr[k] = R[j];
+        while(j <= right){
+            temp[k] = arr[j];
             j++;
             k++;
         }
-    }
-
-    // Main function that sorts arr[l..r] using
-    // merge()
-    public static void sort(int arr[], int l, int r)
-    {
-        if (l < r)
-        {
-            // Find the middle point
-            int m = (l+r)/2;
-
-            // Sort first and second halves
-            sort(arr, l, m);
-            sort(arr , m+1, r);
-
-            // Merge the sorted halves
-            mergesort(arr, l, m, r);
+        for(k = left; k <= right; k++){
+            arr[k] = temp[k];
         }
     }
 
-    public static void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i] + " ");
-        System.out.println();
-    }
-
-
+//public void merge(int[] arr, int left, int mid, int right, int[] temp)
+////declare three index variables
+//// i set to left, j set to middle + 1 and  k set to left again to track where we are placing numbers
+////loop while i  is less than or equal to middle, and j is less than or equal to right
+//	//if array element i is less than array element j place the element i in position k in temp, increment i
+//	//else place array element j in position k in temp, increment j
+//	//increment k
+////loop while i is less than or equal to middle
+//	//place element i in position k in temp, increment i and k
+////loop while j is less than or equal to right
+//	//place element j in position k in temp, increment j and k
+////copy all elements from left to right in temp into arr
 }
