@@ -2,36 +2,53 @@ package com.company;
 import java.util.ArrayList;
 public class Main
 {
+    public static void main(String[] args)
+    {
+
+        Array(10000);
+        IntMerge(int[] Array; int left; int mid; int right; int[] temp;);
+    }
+    public static int[] Array(int num)
+    {
+        int Array[] = new int[num];
+        for(int i = 0; i <= num;i++)
+        {
+            Array[i] = (int)(Math.random()*10);
+        }
+        return Array;
+    }
    int i; //left
    int j; //middle
    int k; //also left to track number placement
     int right;
-    public static void StringMerge(int[] arr, int left, int mid,int right, int[] temp){
+    public static void IntMerge(int[] Array, int left, int mid,int right, int[] temp){
         int i = left;
         int j = mid + 1;
         int k = left;
+
         while( i <= mid && j <= right){
-            if(arr[i].compareTo(arr[j]) < 0){
-                temp[k] = arr[i];
+            if(Array[i] <=(Array[j]))
+            {
+                temp[k] = Array[i];
                 i++;
             }else{
-                temp[k] = arr[j];
+                temp[k] = Array[j];
                 j++;
             }
             k++;
         }
         while(i <= mid){
-            temp[k] = arr[i];
+            temp[k] = Array[i];
             i++;
             k++;
         }
         while(j <= right){
-            temp[k] = arr[j];
+            temp[k] = Array[j];
             j++;
             k++;
         }
         for(k = left; k <= right; k++){
-            arr[k] = temp[k];
+            Array[k] = temp[k];
         }
     }
 
