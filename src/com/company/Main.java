@@ -5,51 +5,66 @@ public class Main
     public static void main(String[] args)
     {
 
-        Array(10000);
-        IntMerge(int[] Array; int left; int mid; int right; int[] temp;);
+        int[] array = Arr(10000);
+        IntMerge(array, 0, );
     }
-    public static int[] Array(int num)
+    public static int[] Arr(int num)
     {
-        int Array[] = new int[num];
+        int Arr[] = new int[num];
         for(int i = 0; i <= num;i++)
         {
-            Array[i] = (int)(Math.random()*10);
+            Arr[i] = (int)(Math.random()*10);
         }
-        return Array;
+        return Arr;
     }
    int i; //left
    int j; //middle
    int k; //also left to track number placement
     int right;
-    public static void IntMerge(int[] Array, int left, int mid,int right, int[] temp){
+    public static void IntMerge(int[] Arr, int left, int mid,int right, int[] temp){
         int i = left;
         int j = mid + 1;
         int k = left;
 
         while( i <= mid && j <= right){
-            if(Array[i] <=(Array[j]))
+            if(Arr[i] <=(Arr[j]))
             {
-                temp[k] = Array[i];
+                temp[k] = Arr[i];
                 i++;
             }else{
-                temp[k] = Array[j];
+                temp[k] = Arr[j];
                 j++;
             }
             k++;
         }
         while(i <= mid){
-            temp[k] = Array[i];
+            temp[k] = Arr[i];
             i++;
             k++;
         }
         while(j <= right){
-            temp[k] = Array[j];
+            temp[k] = Arr[j];
             j++;
             k++;
         }
         for(k = left; k <= right; k++){
-            Array[k] = temp[k];
+            Arr[k] = temp[k];
         }
+
+    }
+    public static void IntMergeSortHelper(int[] elements, int from, int to, int[] temp){
+        if(from < to){
+            int middle = (from + to) / 2;
+            IntMergeSortHelper(elements, from, middle, temp);
+            IntMergeSortHelper(elements,middle+1,to,temp);
+            IntMerge(elements, from, middle, to, temp);
+        }
+    }
+
+    public static void IntMergeSort(int[] elements){
+        int n = elements.length;
+        int[] temp = new int[n];
+        IntMergeSortHelper(elements,0,n-1,temp);
     }
 
 //public void merge(int[] arr, int left, int mid, int right, int[] temp)
