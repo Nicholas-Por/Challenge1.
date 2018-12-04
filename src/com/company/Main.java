@@ -4,18 +4,19 @@ public class Main
 {
     public static void main(String[] args)
     {
-        int[] temp;
-        int[] array = Arr(10000);
-        IntMerge(array, 0, 0, 0, (int[] temp1);
+        int[] temp1 = {};
+        Arr(10000);
+        int[] array = new int[Arry.length];
+        IntMerge(array, 0, 0, 0, temp1);
     }
     public static int[] Arr(int num)
     {
-        int Arr[] = new int[num];
+        int Arry[] = {};
         for(int i = 0; i <= num;i++)
         {
-            Arr[i] = (int)(Math.random()*10);
+            Arry[i] = (int)(Math.random()*10);
         }
-        return Arr;
+        return Arry;
     }
    int i; //left
    int j; //middle
@@ -66,6 +67,7 @@ public class Main
         int[] temp = new int[n];
         IntMergeSortHelper(elements,0,n-1,temp);
     }
+
 
 //public void merge(int[] arr, int left, int mid, int right, int[] temp)
 ////declare three index variables
